@@ -1,7 +1,7 @@
 use crate::{
-    mesh_builder::{IMeshBuilder, IMeshData},
-    mesh_pattern, IVolumeData,
+    mesh_builder::{IMeshBuilder, IMeshData},IVolumeData,
 };
+use super::mesh_pattern;
 use num_traits::{Float, ToPrimitive, Unsigned};
 use std::marker::Copy;
 
