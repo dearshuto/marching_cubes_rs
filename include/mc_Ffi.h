@@ -29,3 +29,9 @@ extern "C" void build_16_with_marching_cubes(void* mesh_data_ptr, const void* vo
 extern "C" void build_32_with_marching_cubes(void* mesh_data_ptr, const void* volume_data_ptr, float threshold);
 extern "C" void build_64_with_marching_cubes(void* mesh_data_ptr, const void* volume_data_ptr, float threshold);
 extern "C" void build_128_with_marching_cubes(void* mesh_data_ptr, const void* volume_data_ptr, float threshold);
+
+// メッシュへのアクセス
+extern "C" size_t get_vertex_count(void* mesh_data_ptr);
+extern "C" size_t get_index_count(void* mesh_data_ptr);
+extern "C" void get_vertex(void* mesh_data_ptr, float* pOutX, float* pOutY, float* pOutZ, size_t index);
+extern "C" uint32_t get_index(void* mesh_data_ptr, size_t index);
