@@ -15,7 +15,7 @@ pub struct MarchingCubesMeshBuilder<
 > where
     F: Float,
     U: Unsigned,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
@@ -28,7 +28,7 @@ impl<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
 where
     F: Float,
     U: Unsigned,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
@@ -46,7 +46,7 @@ impl<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
 where
     F: Float,
     U: Unsigned + num_traits::NumCast,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + ToPrimitive + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
