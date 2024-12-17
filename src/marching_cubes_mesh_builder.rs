@@ -1,6 +1,7 @@
 use crate::{
+    detail,
     mesh_builder::{IMeshBuilder, IMeshData},
-    mesh_pattern, IVolumeData,
+    IVolumeData,
 };
 use num_traits::{Float, ToPrimitive, Unsigned};
 use std::marker::Copy;
@@ -72,13 +73,13 @@ where
                         }
                     }
 
-                    let triangles = &mesh_pattern::TRIANGLE_TABLE[pattern];
+                    let triangles = &detail::TRIANGLE_TABLE[pattern];
                     for triangle in triangles {
                         if *triangle == -1 {
                             continue;
                         }
 
-                        let position = &mesh_pattern::CUBE_MID_POINT_TABLE[*triangle as usize];
+                        let position = &detail::CUBE_MID_POINT_TABLE[*triangle as usize];
                         let position_x = F::from(position[0]).unwrap() + F::from(x).unwrap();
                         let position_y = F::from(position[1]).unwrap() + F::from(y).unwrap();
                         let position_z = F::from(position[2]).unwrap() + F::from(z).unwrap();
