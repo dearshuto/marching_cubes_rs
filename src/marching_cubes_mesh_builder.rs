@@ -24,12 +24,10 @@ pub struct MarchingCubesMeshBuilder<
     _marker: std::marker::PhantomData<(F, U, TMeshData, TDataType, TVolumeData)>,
 }
 
-impl<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
-    MarchingCubesMeshBuilder<F, U, TMeshData, TDataType, TRESOLUTION, TVolumeData>
+impl<TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
+    MarchingCubesMeshBuilder<f32, u8, TMeshData, TDataType, TRESOLUTION, TVolumeData>
 where
-    F: Float,
-    U: Unsigned,
-    TMeshData: IMeshData<F, U>,
+    TMeshData: IMeshData<f32, u8>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
