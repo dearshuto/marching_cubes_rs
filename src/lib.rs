@@ -1,8 +1,4 @@
-#![feature(generic_const_exprs)]
-#![allow(incomplete_features)]
-
-mod volume_data;
-pub use volume_data::VolumeData;
+pub mod util;
 
 mod mesh_builder;
 pub use mesh_builder::IMeshBuilder;
