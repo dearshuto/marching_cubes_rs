@@ -1,7 +1,7 @@
-use mc::IMeshBuilder;
+use mc::{IMeshBuilder, IVolumeData};
 
 fn main() {
-    let mut volume_data = mc::VolumeData::<u8, 5>::new();
+    let mut volume_data = mc::util::VolumeData::<u8, 5>::new();
     volume_data.set(1, 1, 1, u8::MAX);
     volume_data.set(1, 2, 1, u8::MAX);
     volume_data.set(1, 3, 2, u8::MAX);
