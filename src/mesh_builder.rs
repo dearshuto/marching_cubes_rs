@@ -7,7 +7,7 @@ pub trait IVolumeData<T: Unsigned + Copy, const TRESOLUTION: usize> {
     fn set(&mut self, x: u32, y: u32, z: u32, value: T);
 }
 
-pub trait IMeshData<F, U, const TRESOLUTION: usize>
+pub trait IMeshData<F, U>
 where
     F: Float,
     U: Unsigned,
@@ -21,7 +21,7 @@ pub trait IMeshBuilder<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVo
 where
     F: Float,
     U: Unsigned,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {

@@ -24,9 +24,7 @@ impl<F: Float, U: Unsigned> MeshDataSimple<F, U> {
     }
 }
 
-impl<F: Float, U: Unsigned, const TRESOLUTION: usize> IMeshData<F, U, TRESOLUTION>
-    for MeshDataSimple<F, U>
-{
+impl<F: Float, U: Unsigned> IMeshData<F, U> for MeshDataSimple<F, U> {
     fn push_vertex(&mut self, x: F, y: F, z: F) {
         self._vertex_data.push(x);
         self._vertex_data.push(y);
