@@ -8,3 +8,7 @@ edition = "2021"
 [dependencies]
 num-traits = "0.2"
 obj-exporter = "*"
+
+[dev-dependencies]
+rapier3d = { version = "*", features = ["simd-stable"] }
+kiss3d = "0.32"
