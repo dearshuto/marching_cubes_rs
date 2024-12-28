@@ -1,6 +1,7 @@
 use crate::{
+    detail,
     mesh_builder::{IMeshBuilder, IMeshData},
-    mesh_pattern, IVolumeData,
+    IVolumeData,
 };
 use num_traits::{Float, ToPrimitive, Unsigned};
 use std::marker::Copy;
@@ -15,7 +16,7 @@ pub struct MarchingCubesMeshBuilder<
 > where
     F: Float,
     U: Unsigned,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
@@ -23,12 +24,10 @@ pub struct MarchingCubesMeshBuilder<
     _marker: std::marker::PhantomData<(F, U, TMeshData, TDataType, TVolumeData)>,
 }
 
-impl<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
-    MarchingCubesMeshBuilder<F, U, TMeshData, TDataType, TRESOLUTION, TVolumeData>
+impl<TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
+    MarchingCubesMeshBuilder<f32, u8, TMeshData, TDataType, TRESOLUTION, TVolumeData>
 where
-    F: Float,
-    U: Unsigned,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<f32, u8>,
     TDataType: Unsigned + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
@@ -46,7 +45,7 @@ impl<F, U, TMeshData, TDataType, const TRESOLUTION: usize, TVolumeData>
 where
     F: Float,
     U: Unsigned + num_traits::NumCast,
-    TMeshData: IMeshData<F, U, TRESOLUTION>,
+    TMeshData: IMeshData<F, U>,
     TDataType: Unsigned + ToPrimitive + Copy,
     TVolumeData: IVolumeData<TDataType, TRESOLUTION>,
 {
@@ -72,13 +71,13 @@ where
                         }
                     }
 
-                    let triangles = &mesh_pattern::TRIANGLE_TABLE[pattern];
+                    let triangles = &detail::TRIANGLE_TABLE[pattern];
                     for triangle in triangles {
                         if *triangle == -1 {
                             continue;
                         }
 
-                        let position = &mesh_pattern::CUBE_MID_POINT_TABLE[*triangle as usize];
+                        let position = &detail::CUBE_MID_POINT_TABLE[*triangle as usize];
                         let position_x = F::from(position[0]).unwrap() + F::from(x).unwrap();
                         let position_y = F::from(position[1]).unwrap() + F::from(y).unwrap();
                         let position_z = F::from(position[2]).unwrap() + F::from(z).unwrap();
